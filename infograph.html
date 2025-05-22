@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: Equity in India's Premier Education - SC/ST/OBC Student Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8F9FA; color: #003F5C; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 300px; max-height: 350px; background-color: white; padding: 1rem; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); margin-bottom:1.5rem; }
+        @media (min-width: 768px) { .chart-container { height: 350px; max-height: 400px;} }
+        .stat-card { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); text-align: center; }
+        .stat-card h3 { color: #118AB2; font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .stat-card p.big-number { font-size: 2.25rem; font-weight: 700; color: #003F5C; margin-bottom: 0.25rem; }
+        .stat-card p.small-text { font-size: 0.875rem; color: #6c757d; }
+        h1, h2, h3 { color: #073B4C; }
+        .section-title { font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #118AB2; text-align: center;}
+        .sub-section-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: #118AB2; margin-top:1.5rem; }
+        .content-card { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); margin-bottom:1.5rem; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="py-8 bg-gradient-to-r from-sky-600 to-cyan-500 text-white text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold mb-2 text-white">Equity in India's Premier Education</h1>
+            <p class="text-xl text-sky-100">Visualizing the Journey of SC, ST, & OBC Students</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+
+        <section id="national-picture" class="mb-12">
+            <h2 class="section-title">The National Picture: Enrollment Growth</h2>
+            <p class="text-center text-md text-gray-700 mb-8">India's higher education sector has seen significant enrollment growth from 2014-15 to 2021-22 (AISHE Data). While this indicates broader access, challenges remain in premier institutions.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="stat-card">
+                    <h3>SC Student Enrollment</h3>
+                    <p class="big-number">66.23 Lakh</p>
+                    <p class="small-text">+44% since 2014-15</p>
+                </div>
+                <div class="stat-card">
+                    <h3>ST Student Enrollment</h3>
+                    <p class="big-number">27.1 Lakh</p>
+                    <p class="small-text">+65.2% since 2014-15</p>
+                </div>
+                <div class="stat-card">
+                    <h3>OBC Student Enrollment</h3>
+                    <p class="big-number">1.63 Crore</p>
+                    <p class="small-text">+45% since 2014-15</p>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3 class="sub-section-title text-center">Gross Enrollment Ratio (GER) Trends (2014-15 to 2021-22)</h3>
+                <div class="chart-container" style="height: 300px;">
+                    <canvas id="gerTrendChart"></canvas>
+                </div>
+                <p class="text-xs text-center mt-2 text-gray-600">SC GER: 18.9% to 25.9% | ST GER: 13.5% to 21.2% | Overall GER: 23.7% to 28.4%</p>
+            </div>
+        </section>
+
+        <section id="premier-institutes" class="mb-12">
+            <h2 class="section-title">Spotlight on Premier Institutes</h2>
+            
+            <div class="content-card mb-8">
+                <h3 class="sub-section-title text-center mb-6">Representation Gaps: Student Intake vs. Mandate</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-semibold text-center mb-2">IIT Delhi: UG, PG & PhD Intake % (2024-25)</h4>
+                        <div class="chart-container">
+                            <canvas id="iitDelhiIntakeChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center mt-1 text-gray-600">Shows near compliance at UG, shortfalls at PG & PhD for SC/ST.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-center mb-2">Select NLUs: Intake % vs. Mandate (BA LLB Hons)</h4>
+                        <div class="chart-container">
+                            <canvas id="nluIntakeChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center mt-1 text-gray-600">NLSIU Bangalore (2025) & NLU Delhi (2025). OBC intake at NLU Delhi is 22% vs 27% mandate.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-center mb-2">Top 5 NLUs: Surveyed Student Composition % (2021-22)</h4>
+                        <div class="chart-container" style="max-width:350px; height:300px;">
+                            <canvas id="nluCompositionChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center mt-1 text-gray-600">OBC representation (6.2%) significantly below 27% mandate.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-center mb-2">AIIMS Delhi: MBBS Intake % (2017-18)</h4>
+                        <div class="chart-container">
+                            <canvas id="aiimsIntakeChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center mt-1 text-gray-600">Representation largely aligns with norms.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card mb-8">
+                <h3 class="sub-section-title text-center mb-6">Faculty Underrepresentation: A Critical Issue</h3>
+                 <p class="text-center text-sm text-gray-700 mb-6">Faculty diversity is crucial for mentorship and an inclusive environment, yet SC/ST/OBC representation is critically low in IIMs and IITs.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h4 class="font-semibold text-center mb-2">Faculty Representation % in 13 IIMs</h4>
+                        <div class="chart-container">
+                            <canvas id="iimFacultyChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded">
+                            <p class="font-bold">Unfilled Faculty Posts (Reserved)</p>
+                            <p>7 IIMs: 172 (OBC: 88, SC: 54, ST: 30)</p>
+                            <p>11 IITs: 778 (OBC: 415, SC: 234, ST: 129)</p>
+                        </div>
+                         <p class="text-sm text-gray-600">This lack of diversity impacts mentorship and inclusivity for students from marginalized communities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card mb-8">
+                <h3 class="sub-section-title text-center mb-6">The Academic Journey: Performance & Hurdles</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-semibold text-center mb-2">The "Input Gap": JEE Advanced Median Score Gap % (2013-2023 vs General)</h4>
+                        <div class="chart-container">
+                            <canvas id="jeeAdvancedGapChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center mt-1 text-gray-600">Highlights pre-existing academic disparities. OBC gap of -20% widened during pandemic.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-center mb-2">Top 5 NLUs: % Students with >90% in 12th Grade (2021-22 Survey)</h4>
+                        <div class="chart-container">
+                            <canvas id="nluPerformanceChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center mt-1 text-gray-600">Shows differences in pre-university academic achievement.</p>
+                    </div>
+                </div>
+                 <p class="text-center text-sm text-gray-700 mt-6">Despite input gaps, admitted reserved category students at AIIMS Delhi (NEET 2018) show very high performance, with lowest ST rank at 99.4 percentile, SC at 99.8, and OBC at 99.9, all far above qualifying percentiles.</p>
+            </div>
+
+            <div class="content-card">
+                <h3 class="sub-section-title text-center mb-6">The Dropout Crisis: Numbers & Reasons</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div>
+                        <h4 class="font-semibold text-center mb-2">SC/ST/OBC Dropouts (2018-2023, CUs, IITs, IIMs)</h4>
+                        <p class="text-center text-4xl font-bold text-red-600 mb-1">13,626+</p>
+                        <p class="text-center text-sm text-gray-600 mb-4">Students from reserved categories dropped out.</p>
+                        <div class="chart-container">
+                            <canvas id="dropoutNumbersChart"></canvas>
+                        </div>
+                         <p class="text-xs text-center mt-1 text-gray-600">Data for NLUs is not centrally maintained.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-center mb-2">Key Contributing Factors to Dropouts:</h4>
+                        <ul class="space-y-3 mt-2">
+                            <li class="flex items-start p-3 bg-amber-50 rounded-md"><span class="text-xl mr-3">📚</span> <span class="text-sm"><strong>Academic Pressure & Tough Syllabi:</strong> Difficulty coping, especially with 'input gaps'.</span></li>
+                            <li class="flex items-start p-3 bg-amber-50 rounded-md"><span class="text-xl mr-3">💰</span> <span class="text-sm"><strong>Financial Constraints:</strong> High fees, insufficient aid, loan barriers.</span></li>
+                            <li class="flex items-start p-3 bg-amber-50 rounded-md"><span class="text-xl mr-3">👥</span> <span class="text-sm"><strong>Social Discrimination:</strong> Caste prejudice, alienation, lack of integration.</span></li>
+                            <li class="flex items-start p-3 bg-amber-50 rounded-md"><span class="text-xl mr-3">🧠</span> <span class="text-sm"><strong>Mental Health Issues:</strong> Cumulative stress, anxiety, depression, inadequate support.</span></li>
+                            <li class="flex items-start p-3 bg-amber-50 rounded-md"><span class="text-xl mr-3">🏛️</span> <span class="text-sm"><strong>Lack of Institutional Support:</strong> Ineffective EOCs/SC-ST Cells, poor grievance redressal.</span></li>
+                            <li class="flex items-start p-3 bg-amber-50 rounded-md"><span class="text-xl mr-3">↔️</span> <span class="text-sm"><strong>Alternative Opportunities:</strong> Securing preferred seats or job offers (esp. PG).</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="path-to-equity" class="mb-12">
+            <h2 class="section-title">Path to Equity: Key Recommendations</h2>
+            <p class="text-center text-md text-gray-700 mb-8">Addressing these multifaceted challenges requires a comprehensive approach to foster genuine inclusivity.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="content-card hover:shadow-xl transition-shadow">
+                    <h3 class="sub-section-title !mt-0 !mb-2 text-center">Strengthen Foundational Support</h3>
+                    <p class="text-sm text-gray-600">Implement high-quality preparatory/remedial programs. Invest in improving school education in disadvantaged regions.</p>
+                </div>
+                <div class="content-card hover:shadow-xl transition-shadow">
+                    <h3 class="sub-section-title !mt-0 !mb-2 text-center">Enhance Inclusivity & Combat Discrimination</h3>
+                    <p class="text-sm text-gray-600">Enforce anti-discrimination policies. Conduct mandatory caste-sensitization training. Ensure effective EOCs/SC-ST Cells. Recruit diverse faculty.</p>
+                </div>
+                <div class="content-card hover:shadow-xl transition-shadow">
+                    <h3 class="sub-section-title !mt-0 !mb-2 text-center">Comprehensive Financial & Welfare Support</h3>
+                    <p class="text-sm text-gray-600">Increase financial aid to cover full costs. Establish culturally sensitive mental health services and academic support.</p>
+                </div>
+                <div class="content-card hover:shadow-xl transition-shadow">
+                    <h3 class="sub-section-title !mt-0 !mb-2 text-center">Improve Data Collection & Transparency</h3>
+                    <p class="text-sm text-gray-600">Standardize and centralize disaggregated data on admissions, performance, and dropouts. Mandate transparent reporting.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-6 bg-gray-800 text-gray-300 text-center">
+        <p class="text-sm">Data synthesized from "Indian Institutes: Diversity and Performance" & "Student Performance and Dropout Analysis" reports.</p>
+        <p class="text-xs mt-1">Infographic for illustrative and informational purposes.</p>
+    </footer>
+
+<script>
+    const chartJsConfig = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                            return label.join(' ');
+                        }
+                        return label;
+                    },
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+                        if (label) { label += ': '; }
+                        if (context.parsed.y !== null) {
+                            label += context.parsed.y + (context.dataset.isPercentage === false ? '' : '%');
+                        }
+                        return label;
+                    }
+                }
+            },
+            legend: {
+                labels: { color: '#003F5C', font: {size: 10} }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { color: '#003F5C', font: {size: 9}, callback: function(value, index, values) { return this.chart.config.data.datasets[0].isPercentage === false ? value : value + '%'; } },
+                grid: { color: 'rgba(0,0,0,0.05)'}
+            },
+            x: {
+                ticks: { color: '#003F5C', font: {size: 9}, callback: function(value) { const label = this.getLabelForValue(value); if (typeof label === 'string' && label.length > 16) { const words = label.split(' '); let currentLine = ''; let lines = []; for(let word of words) { if ((currentLine + word).length > 16) { lines.push(currentLine.trim()); currentLine = ''; } currentLine += word + ' '; } lines.push(currentLine.trim()); return lines; } return label; } },
+                grid: { display: false }
+            }
+        },
+        maintainAspectRatio: false,
+        responsive: true
+    };
+
+    // GER Trend Chart
+    const gerCtx = document.getElementById('gerTrendChart').getContext('2d');
+    new Chart(gerCtx, {
+        type: 'line',
+        data: {
+            labels: ['Overall GER', 'Female GER', 'SC GER', 'ST GER'],
+            datasets: [
+                { label: '2014-15', data: [23.7, 22.9, 18.9, 13.5], borderColor: '#A05195', backgroundColor: 'rgba(160, 81, 149, 0.1)', fill: false, tension: 0.1, isPercentage: true },
+                { label: '2021-22', data: [28.4, 28.5, 25.9, 21.2], borderColor: '#2F4B7C', backgroundColor: 'rgba(47, 75, 124, 0.1)', fill: false, tension: 0.1, isPercentage: true }
+            ]
+        },
+        options: {...chartJsConfig, scales: {...chartJsConfig.scales, y: {...chartJsConfig.scales.y, min:10}}}
+    });
+
+    // IIT Delhi Intake Chart
+    const iitDelhiCtx = document.getElementById('iitDelhiIntakeChart').getContext('2d');
+    new Chart(iitDelhiCtx, {
+        type: 'bar',
+        data: {
+            labels: [['UG SC', '(14.92%)'], ['UG ST', '(7.46%)'], ['PG SC', '(13.11%)'], ['PG ST', '(4.31%)'], ['PhD SC', '(9.69%)'], ['PhD ST', '(3.28%)']],
+            datasets: [
+                { label: 'Actual Intake %', data: [14.92, 7.46, 13.11, 4.31, 9.69, 3.28], backgroundColor: '#2F4B7C', isPercentage: true },
+                { label: 'Mandated Quota %', data: [15, 7.5, 15, 7.5, 15, 7.5], backgroundColor: '#6c757d', isPercentage: true }
+            ]
+        },
+        options: chartJsConfig
+    });
+
+    // NLU Intake Chart
+    const nluIntakeCtx = document.getElementById('nluIntakeChart').getContext('2d');
+    new Chart(nluIntakeCtx, {
+        type: 'bar',
+        data: {
+            labels: [['NLSIU SC', '(15%)'], ['NLSIU ST', '(7.5%)'], ['NLSIU OBC', '(27%)'], ['NLU Delhi SC', '(15%)'], ['NLU Delhi ST', '(7.5%)'], ['NLU Delhi OBC', '(22%)']],
+            datasets: [
+                { label: 'Actual Intake %', data: [15, 7.5, 27, 15, 7.5, 22], backgroundColor: '#A05195', isPercentage: true },
+                { label: 'Mandated Quota %', data: [15, 7.5, 27, 15, 7.5, 27], backgroundColor: '#6c757d', isPercentage: true }
+            ]
+        },
+        options: chartJsConfig
+    });
+    
+    // NLU Composition Chart
+    const nluCompositionCtx = document.getElementById('nluCompositionChart').getContext('2d');
+    new Chart(nluCompositionCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['SC (11.91%)', 'ST (6.53%)', 'OBC (6.20%)', 'General (57.91%)', 'Other Reserved (17.45%)'],
+            datasets: [{ data: [11.91, 6.53, 6.20, 57.91, 17.45], backgroundColor: ['#2F4B7C', '#A05195', '#FF7C43', '#6c757d', '#FFA600'], isPercentage: true }]
+        },
+        options: {...chartJsConfig, plugins: {...chartJsConfig.plugins, legend: {...chartJsConfig.plugins.legend, position:'bottom'}}}
+    });
+
+    // AIIMS Delhi Intake Chart
+    const aiimsIntakeCtx = document.getElementById('aiimsIntakeChart').getContext('2d');
+    new Chart(aiimsIntakeCtx, {
+        type: 'bar',
+        data: {
+            labels: [['SC (15%)'], ['ST (8%)'], ['OBC (27%)'], ['General (50%)']],
+            datasets: [
+                { label: 'Actual Intake %', data: [15, 8, 27, 50], backgroundColor: '#FF7C43', isPercentage: true },
+                { label: 'Mandated/Expected %', data: [15, 7.5, 27, 50.5], backgroundColor: '#6c757d', isPercentage: true }
+            ]
+        },
+        options: chartJsConfig
+    });
+    
+    // IIM Faculty Chart
+    const iimFacultyCtx = document.getElementById('iimFacultyChart').getContext('2d');
+    new Chart(iimFacultyCtx, {
+        type: 'bar',
+        data: {
+            labels: ['SC', 'ST', 'OBC'],
+            datasets: [
+                { label: 'Actual Faculty %', data: [5, 1, 9.6], backgroundColor: '#D45087', isPercentage: true },
+                { label: 'Mandated Quota %', data: [15, 7.5, 27], backgroundColor: '#6c757d', isPercentage: true }
+            ]
+        },
+        options: chartJsConfig
+    });
+
+    // JEE Advanced Gap Chart
+    const jeeGapCtx = document.getElementById('jeeAdvancedGapChart').getContext('2d');
+    new Chart(jeeGapCtx, {
+        type: 'bar',
+        data: {
+            labels: ['ST Students', 'SC Students', 'OBC Students'],
+            datasets: [{ label: 'Median Score Gap % (vs General)', data: [-60, -51, -20], backgroundColor: ['#A05195', '#2F4B7C', '#FF7C43'], isPercentage: true }]
+        },
+        options: chartJsConfig
+    });
+    
+    // NLU Performance Chart
+    const nluPerfCtx = document.getElementById('nluPerformanceChart').getContext('2d');
+    new Chart(nluPerfCtx, {
+        type: 'bar',
+        data: {
+            labels: ['SC', 'ST', 'OBC', 'General'],
+            datasets: [{ label: '% Students with >90% in 12th Grade', data: [53.42, 42.5, 55.26, 85.07], backgroundColor: ['#2F4B7C', '#A05195', '#FF7C43', '#6c757d'], isPercentage: true }]
+        },
+        options: chartJsConfig
+    });
+
+    // Dropout Numbers Chart
+    const dropoutCtx = document.getElementById('dropoutNumbersChart').getContext('2d');
+    new Chart(dropoutCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Central Universities', 'IITs', 'IIMs'],
+            datasets: [
+                { label: 'OBC Dropouts', data: [4596, 2066, 163], backgroundColor: '#FF7C43', isPercentage: false },
+                { label: 'SC Dropouts', data: [2424, 1068, 188], backgroundColor: '#2F4B7C', isPercentage: false },
+                { label: 'ST Dropouts', data: [2622, 408, 91], backgroundColor: '#A05195', isPercentage: false }
+            ]
+        },
+        options: {...chartJsConfig, scales: {...chartJsConfig.scales, x: {...chartJsConfig.scales.x, stacked: true}, y: {...chartJsConfig.scales.y, stacked: true}}}
+    });
+
+</script>
+</body>
+</html>
